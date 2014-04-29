@@ -1,0 +1,27 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    <h1>Home</h1>
+    <section>
+            <article>
+                <h2>{{ article.title }}</h2>
+                <p>
+                    {{ article.body }}
+                </p>
+
+                {%if user%}
+                    <h3>Ajout commentaire</h3>
+                    <form action="" method="post">
+                            <textarea name="comment"></textarea>
+                            <input type="submit" value="envoyer">
+                    </form>
+                {%endif%}
+                {%if comments is defined and comments is not empty%}
+                    <ul></ul>
+                {%endif%}
+
+            </article>
+
+            
+    </section>
+{% endblock %}

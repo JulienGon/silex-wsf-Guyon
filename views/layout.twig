@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}/css/styles.css">
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="{{ app.url_generator.generate('home') }}">Home</a>
+                    </li>
+                    {% if admin == 1 %}
+                    <li>
+                        <a href="{{ app.url_generator.generate('getAdminArticle') }}">Admin création article</a>
+                    </li>
+                    <li>
+                        <a href="{{ app.url_generator.generate('getAdminTags') }}">Admin création tag</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <div>
+            {% if user %}
+                    <p>Bienvenue, {{ user.name }}</p>
+                    <a href="{{ app.url_generator.generate('logout') }}">Logout</a>
+            {% else  %}
+                <a href="{{ app.url_generator.generate('login') }}">Login</a>
+                <a href="{{ app.url_generator.generate('register') }}">Register</a>
+            {% endif %}
+            </div>
+        </header>
+        <div id="content">{% block content %}{% endblock %}</div>
+        <div id="footer">
+        </div>
+    </body>
+</html>
